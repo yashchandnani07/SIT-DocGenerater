@@ -1,0 +1,75 @@
+{
+  "meta": {
+    "name": "Yash Chandnani",
+    "prn": "26070126510",
+    "assignment": "Assignment 6",
+    "badge": "EXPERIMENT 6",
+    "title": "Random Forest",
+    "subtitle": "Implementation of Random Forest for Classification",
+    "course": "Supervised Machine Learning Lab",
+    "date": "11 October 2026",
+    "header_right": "Experiment 6 - Random Forest"
+  },
+  "sections": [
+    {"type": "h1", "text": "1. Aim"},
+    {"type": "p", "text": "To implement and understand the Random Forest algorithm for classification tasks, apply it to a real-world multiclass dataset, and evaluate its predictive performance using standard classification metrics. The experiment further aims to develop practical insight into how ensemble methods improve upon individual decision trees."},
+    {"type": "h1", "text": "2. Objectives"},
+    {"type": "bullets", "items": [
+      "Understand the Random Forest classification mechanism and its underlying working principle.",
+      "Implement the Random Forest algorithm on a dataset for multiclass classification.",
+      "Evaluate the model using relevant metrics such as accuracy, precision, recall, and F1-score."
+    ]},
+    {"type": "h1", "text": "3. Problem Statement"},
+    {"type": "p", "text": "Use a vitamin deficiency disease dataset to demonstrate the application of the Random Forest algorithm for multiclass classification. The task is to classify individuals into disease categories - Anemia, Healthy, Night_Blindness, Rickets_Osteomalacia, and Scurvy - based on demographic, lifestyle, and nutritional features."},
+    {"type": "h1", "text": "4. Theory"},
+    {"type": "h2", "text": "4.1 Random Forest Algorithm"},
+    {"type": "p", "text": "Random Forest is a <b>supervised ensemble learning algorithm</b> that builds a large collection of decision trees during training and outputs the class that is the mode of the individual trees' predictions. Each tree is trained on a random subset of the data and considers a random subset of features at each split."},
+    {"type": "h2", "text": "4.2 Mathematical Formulation"},
+    {"type": "p", "text": "At each node split, only m features (m < p) are randomly selected, and the best split is chosen using an impurity criterion such as Gini impurity:"},
+    {"type": "formula", "text": "Gini(t) = 1 \u2212 \u03a3<sub>i</sub> (p<sub>i</sub>)<super>2</super>"},
+    {"type": "p", "text": "For classification, the final predicted class label for an input x is obtained by aggregating the predictions of all B trees h<sub>b</sub>(x):"},
+    {"type": "formula", "text": "\u0177 = mode{ h<sub>1</sub>(x), h<sub>2</sub>(x), ..., h<sub>B</sub>(x) }"},
+    {"type": "h2", "text": "4.3 Important Hyperparameters"},
+    {"type": "table",
+     "header": ["Hyperparameter", "Description"],
+     "widths": [4.2, 12.4],
+     "align": ["l", "l"],
+     "rows": [
+       ["n_estimators", "Number of decision trees built in the forest. More trees generally improve stability and accuracy but increase computation time."],
+       ["max_depth", "Maximum depth allowed for each decision tree. Controls overfitting; shallow trees underfit, very deep trees overfit."]
+     ]},
+    {"type": "h1", "text": "5. Implementation and Results"},
+    {"type": "p", "text": "The Random Forest classifier was implemented in Python using scikit-learn. The implementation proceeds through the following steps, from data loading to final performance visualization."},
+    {"type": "numbered", "items": [
+      "Import NumPy, Pandas, Matplotlib and the required Scikit-learn modules.",
+      "Load the dataset and inspect its head, shape, information, and missing-value counts.",
+      "Split the data into training and testing sets using an 80:20 ratio with random_state=42.",
+      "Train the Random Forest model and evaluate it on the test set."
+    ]},
+    {"type": "h2", "text": "5.1 Source Code"},
+    {"type": "code", "text": "from sklearn.ensemble import RandomForestClassifier\n\nmodel = Pipeline(steps=[\n    ('preprocessor', preprocessor),\n    ('classifier', RandomForestClassifier(\n        n_estimators=100, oob_score=True,\n        random_state=42, n_jobs=-1\n    ))\n])\n\nmodel.fit(X_train, y_train)"},
+    {"type": "h2", "text": "5.2 Model Evaluation"},
+    {"type": "p", "text": "The trained model was evaluated on the held-out test set of 800 samples. The overall accuracy achieved was 0.95 (95%), and the complete per-class classification report is presented below."},
+    {"type": "figure", "path": "sample-figure.png", "width_cm": 15.0, "caption": "Figure 1: Program output - dataset inspection and classification report."},
+    {"type": "table",
+     "header": ["Class", "Precision", "Recall", "F1-score", "Support"],
+     "widths": [4.8, 2.6, 2.6, 2.6, 2.4],
+     "align": ["l", "c", "c", "c", "c"],
+     "rows": [
+       ["Anemia", "0.93", "0.96", "0.95", "249"],
+       ["Healthy", "0.98", "0.97", "0.98", "302"],
+       ["Scurvy", "1.00", "0.26", "0.42", "19"],
+       ["Accuracy", "", "", "0.95", "800"],
+       ["Weighted avg", "0.95", "0.95", "0.94", "800"]
+     ],
+     "summary_rows": [3, 4]},
+    {"type": "h2", "text": "5.3 Hyperparameter Tuning Results"},
+    {"type": "kv_table", "rows": [
+      ["Best Kernel", "RBF"],
+      ["Best C", "100"],
+      ["Best CV R<super>2</super> Score", "0.8339941360"]
+    ]},
+    {"type": "h1", "text": "6. Conclusion"},
+    {"type": "p", "text": "In this experiment, a Random Forest classifier was successfully implemented on the vitamin deficiency disease dataset to perform multiclass classification. The ensemble-based approach achieved a high overall test accuracy of 95%, highlighting both the strength of Random Forest as a robust ensemble method and the importance of addressing class imbalance for underrepresented categories."}
+  ]
+}

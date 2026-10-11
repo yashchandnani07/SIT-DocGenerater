@@ -1,0 +1,6 @@
+__pycache__/
+*.py[cod]
+*.pdf
+*.docx
+qa/
+.env
