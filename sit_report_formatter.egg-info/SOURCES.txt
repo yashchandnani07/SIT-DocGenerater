@@ -1,0 +1,14 @@
+LICENSE
+README.md
+pyproject.toml
+sitfmt.py
+assets/sit-logo.png
+scripts/docx_builder.py
+scripts/make_report.py
+scripts/pdf_builder.py
+sit_report_formatter.egg-info/PKG-INFO
+sit_report_formatter.egg-info/SOURCES.txt
+sit_report_formatter.egg-info/dependency_links.txt
+sit_report_formatter.egg-info/entry_points.txt
+sit_report_formatter.egg-info/requires.txt
+sit_report_formatter.egg-info/top_level.txt

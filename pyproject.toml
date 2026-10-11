@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sit-report-formatter"
+version = "1.0.0"
+description = "Universal agent skill + CLI that formats assignments and lab reports into the polished SIT institutional PDF/DOCX format"
+readme = "README.md"
+license = { file = "LICENSE" }
+authors = [{ name = "Yash Chandnani" }]
+requires-python = ">=3.9"
+dependencies = [
+    "reportlab>=3.6",
+    "python-docx>=0.8.11",
+    "Pillow>=9.0",
+]
+keywords = ["agent-skills", "skill", "report", "pdf", "docx", "academic"]
+
+[project.scripts]
+sitfmt = "sitfmt:main"
+
+[tool.setuptools]
+py-modules = ["sitfmt"]
+
+[tool.setuptools.data-files]
+"share/sit-formatter/scripts" = [
+    "scripts/make_report.py",
+    "scripts/pdf_builder.py",
+    "scripts/docx_builder.py",
+]
+"share/sit-formatter/assets" = [
+    "assets/sit-logo.png",
+]
