@@ -4,3 +4,6 @@ __pycache__/
 *.docx
 qa/
 .env
+build/
+*.egg-info/
+dist/
